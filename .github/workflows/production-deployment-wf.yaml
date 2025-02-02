@@ -1,0 +1,43 @@
+name: wf-production-deploy
+
+on:
+  push:
+    branches:
+      - production
+
+jobs:
+  production-build-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
+
+      - name: Build Website with Parcel
+        run: |
+          npx parcel build "./src/index.html" --dist-dir "./dev" --public-url "./"
+
+      - name: Upload Build Artifacts
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: "./dev"
+          name: "production-artifact"
+
+  production-deploy-job:
+    needs: production-build-job
+    environment: production-env
+    permissions:
+      pages: write
+      id-token: write
+      contents: read
+    runs-on: ubuntu-latest
+    steps:
+      - name: Require Manual Approval Before Deployment
+        run: echo "Waiting for manual approval before deployment."
+
+      - name: Deploy Artifacts to GitHub Pages
+        uses: actions/deploy-pages@v4
+        with:
+          artifact_name: "production-artifact"
+          token: ${{ secrets.GITHUB_TOKEN }}
