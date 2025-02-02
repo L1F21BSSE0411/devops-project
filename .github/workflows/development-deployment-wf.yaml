@@ -2,7 +2,7 @@ name: wf-development-deploy
 on:
   push:
     branches:
-      - development
+      - develop
 jobs:
   wf-develop-build-job:
     runs-on: ubuntu-latest
