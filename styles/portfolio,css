@@ -1,0 +1,10 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #ecf0f1;
+}
+
+.project {
+    border-left: 5px solid #16a085;
+    padding-left: 10px;
+    margin-top: 10px;
+}
