@@ -4,15 +4,12 @@ body {
 }
 
 .service-card {
-    background: #3498db;
-    color: white;
+    background-color: #f4f4f4;  /* Corrected */
+    color: #333;                /* Corrected */
     padding: 20px;
     margin: 10px;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
-    color: #333;
 }
+
 nav ul {
     list-style: none;
     padding: 0;
@@ -20,6 +17,7 @@ nav ul {
     display: flex;
     justify-content: center;
 }
+
 nav ul li {
     margin: 0;
     padding: 15px;
@@ -35,6 +33,7 @@ nav ul li a:hover {
     background: #555;
     border-radius: 5px;
 }
+
 .hero {
     text-align: center;
     color: white;
@@ -64,10 +63,12 @@ nav ul li a:hover {
 .hero a:hover {
     background: #cc5200;
 }
+
 main {
     padding: 20px;
     text-align: center;
 }
+
 footer {
     text-align: center;
     padding: 20px;
