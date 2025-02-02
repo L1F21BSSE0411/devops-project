@@ -1,0 +1,10 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+}
+
+.blog article {
+    border-bottom: 2px solid #c0392b;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}

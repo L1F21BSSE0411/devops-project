@@ -1,5 +1,13 @@
 body {
     font-family: Arial, sans-serif;
+    background-color: #eaf2f8;
+}
+
+.service-card {
+    background: #3498db;
+    color: white;
+    padding: 20px;
+    margin: 10px;
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
