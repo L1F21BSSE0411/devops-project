@@ -24,15 +24,18 @@ jobs:
 
       - name: Build Website with Parcel
         run: |
-          npx parcel build "./src/index.html" --dist-dir "./dist" --public-url "./"
+          npx parcel build "./src/index.html" --dist-dir "./dev" --public-url "./"
 
       - name: Debug Build Directory
-        run: ls -la ./dist
+        run: ls -la ./dev  # ✅ Corrected to check the right folder
+
+      - name: Verify `index.html` Exists
+        run: cat ./dev/index.html  # ✅ Ensure the file is there
 
       - name: Upload Build Artifacts
         uses: actions/upload-pages-artifact@v3
         with:
-          path: "./dist"
+          path: "./dev"  # ✅ Matches the build output directory
           name: "production-artifact"
 
   production-deploy-job:
