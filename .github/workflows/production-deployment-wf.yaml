@@ -5,11 +5,6 @@ on:
     branches:
       - production
 
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
 jobs:
   production-build-job:
     runs-on: ubuntu-latest
@@ -19,18 +14,9 @@ jobs:
         with:
           ref: ${{ github.ref }}
 
-      - name: Install Dependencies
-        run: npm install
-
       - name: Build Website with Parcel
         run: |
-          npx parcel build "./src/index.html" --dist-dir "./dist" --public-url "./"
-
-      - name: Debug Build Directory
-        run: ls -la ./dist 
-
-      - name: Verify index.html Exists
-        run: cat ./dist/index.html || echo "ERROR: index.html is missing"
+          npx parcel build "./src/index.html" --dist-dir "./dev" --public-url "./"
 
       - name: Upload Build Artifacts
         uses: actions/upload-pages-artifact@v3
@@ -41,6 +27,10 @@ jobs:
   production-deploy-job:
     needs: production-build-job
     environment: production-env
+    permissions:
+      pages: write
+      id-token: write
+      contents: read
     runs-on: ubuntu-latest
     steps:
       - name: Require Manual Approval Before Deployment
