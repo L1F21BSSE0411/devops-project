@@ -27,7 +27,7 @@ jobs:
           npx parcel build "./src/index.html" --dist-dir "./dist" --public-url "./"
 
       - name: Debug Build Directory
-        run: ls -la ./dist || echo "ERROR: dist/ folder is missing"
+        run: ls -la ./dist 
 
       - name: Verify index.html Exists
         run: cat ./dist/index.html || echo "ERROR: index.html is missing"
