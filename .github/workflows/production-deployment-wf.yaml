@@ -24,13 +24,13 @@ jobs:
 
       - name: Build Website with Parcel
         run: |
-          npx parcel build "src/index.html" --dist-dir "./dist" --public-url "./"
+          npx parcel build "./src/index.html" --dist-dir "./dist" --public-url "./"
 
       - name: Debug Build Directory
-        run: ls -la ./dist  # ✅ Ensure index.html exists
+        run: ls -la ./dist || echo "ERROR: dist/ folder is missing"
 
       - name: Verify index.html Exists
-        run: cat ./dist/index.html 
+        run: cat ./dist/index.html || echo "ERROR: index.html is missing"
 
       - name: Upload Build Artifacts
         uses: actions/upload-pages-artifact@v3
