@@ -35,7 +35,7 @@ jobs:
       - name: Upload Build Artifacts
         uses: actions/upload-pages-artifact@v3
         with:
-          path: "./dev"  # ✅ Matches the build output
+          path: "./dev"  # ✅ Uploading the correct directory
           name: "production-artifact"
 
   production-deploy-job:
